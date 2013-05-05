@@ -1,0 +1,27 @@
+.gridster .gs_w {
+    background: #2a2a2a;
+}
+
+.dashup-widget-header {
+	background: #272727;
+	color:#828282;
+}
+
+.dashup-widget-content {
+	background: #2a2a2a;
+}
+
+.dashup-widget-footer {
+	background: #272727;
+	color:#828282;
+}
+
+.big-text {
+	color: #FFFFFF;
+   	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-size: 24pt;
+	font-weight: bold;
+} 
+
+
+

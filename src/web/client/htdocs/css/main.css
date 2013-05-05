@@ -1,0 +1,18 @@
+body {
+	background: #101214;
+   	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+
+.gridster .gs_w {
+    cursor: pointer;
+}
+
+
+/* =============================================================================
+   NORMALIZATION
+========================================================================== */
+
+*  {
+  margin: 0;
+  padding: 0;
+}

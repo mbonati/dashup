@@ -1,0 +1,75 @@
+.gridster .gs_w {
+    cursor: pointer;
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.dashup-widget-header {
+	width: 100%;
+}
+
+.dashup-widget {
+	width: 100%;
+	height: 100%;
+}
+
+.dashup-widget-header {
+  height: 20px;
+  top: 0;
+  position: absolute;
+  width: 96%;
+  padding-left: 2%;
+  padding-right: 2%;
+  font-size: 8pt;
+  font-weight: bold;
+  /*
+  border-top: solid GREEN;
+  border-bottom: solid GREEN;
+  */
+}
+
+.dashup-widget-content {
+  top: 20;
+  bottom: 20;
+  position: absolute;
+  width: 100%;
+  font-size: 10pt;
+  /*
+  border-top: solid 1px BLUE;
+  border-bottom: solid 1px BLUE;
+  */
+}
+
+.dashup-widget-footer {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  width: 96%;
+  padding-left: 2%;
+  padding-right: 2%;
+  font-size: 8pt;
+  font-weight: bold;
+  /*
+  border-top: solid ORANGE;
+  border-bottom: solid ORANGE;
+  */
+}
+
+.big-text {
+	color: #FFFFFF;
+   	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-size: 24pt;
+	font-weight: bold;
+} 
+
+
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+[hidden] { display: none; }
+
+ul, ol {
+    list-style: none;
+}
+
+

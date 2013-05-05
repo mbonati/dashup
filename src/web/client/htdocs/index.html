@@ -1,0 +1,165 @@
+<html>
+<head>
+
+	<title>DashUp</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- JQuery main -->
+	<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+
+	<!-- Bootstrap -->
+	<!--<link rel="stylesheet" type="text/css" href="js/bootstrap/css/bootstrap.min.css">-->
+	<link rel="stylesheet" type="text/css" href="js/bootstrap/css/bootstrap-cosmo.min.css">
+	<script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="js/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+	<!-- Gridster Dashboard -->
+	<link rel="stylesheet" type="text/css" href="js/gridster/jquery.gridster.min.css">
+	<script type="text/javascript" src="js/gridster/jquery.gridster.js"  charset="utf-8"></script>
+
+	<!-- Undescore -->
+	<script type="text/javascript" src="js/underscore/underscore.min.js"  charset="utf-8"></script>
+
+	<!-- momentjs -->
+	<script type="text/javascript" src="js/momentjs/moment.min.js"  charset="utf-8"></script>
+
+	<!-- chartjs -->
+	<script type="text/javascript" src="js/chartjs/chart.min.js"  charset="utf-8"></script>
+
+	<!-- pie-chart -->
+	<link rel="stylesheet" type="text/css" href="js/retro-easy-pie-chart/jquery.easy-pie-chart.css">
+	<script type="text/javascript" src="js/retro-easy-pie-chart/jquery.easy-pie-chart.js"  charset="utf-8"></script>
+
+
+	<!-- Pie Menu -->
+	<!--
+	<link rel="stylesheet" type="text/css" href="js/pie-menu/css/piemenu.css">
+	<script type="text/javascript" src="js/pie-menu/js/jquery.menu.js"  charset="utf-8"></script>
+	-->
+
+	<!-- DashUp Core -->
+	<script type="text/javascript" src="js/uuid.js"  charset="utf-8"></script>
+	<script type="text/javascript" src="js/dashup/dashup.js"  charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="js/dashup/dashup.css">
+
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/dashup-skin/dashup-skin-dark.css">
+
+</head>
+<body>
+
+
+<div class="container">
+
+	<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">Dashup</a>
+      <div class="nav-collapse">
+        <!--a  href="#addWidget_modal" data-toggle="modal" class="btn btn-success btn-small">Add Widget</a-->
+        <a  href="#addWidget_modal" data-toggle="modal" class="btn btn-success btn-small">Add Widget</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+		<!-- Dashboard Widgets -->
+		<div class="gridster">
+		    <ul>
+		    	<!--
+		        <li data-row="1" data-col="1" data-sizex="1" data-sizey="1"></li>
+		        <li data-row="2" data-col="1" data-sizex="1" data-sizey="1"></li>
+		        <li data-row="3" data-col="1" data-sizex="1" data-sizey="1"></li>
+		 
+		        <li data-row="1" data-col="2" data-sizex="2" data-sizey="1"></li>
+		        <li data-row="2" data-col="2" data-sizex="2" data-sizey="2"></li>
+		 
+		        <li data-row="1" data-col="4" data-sizex="1" data-sizey="1"></li>
+		        <li data-row="2" data-col="4" data-sizex="2" data-sizey="1"></li>
+		        <li data-row="3" data-col="4" data-sizex="1" data-sizey="1"></li>
+		 
+		        <li data-row="1" data-col="5" data-sizex="1" data-sizey="1"></li>
+		        <li data-row="3" data-col="5" data-sizex="1" data-sizey="1"></li>
+		 
+		        <li data-row="1" data-col="6" data-sizex="1" data-sizey="1"></li>
+		        <li data-row="2" data-col="6" data-sizex="1" data-sizey="2"></li>
+		    -->
+		    </ul>
+		</div>
+
+</div>
+
+
+	<!-- Add Widget Popup -->
+	<div class="modal fade" id="addWidget_modal">
+	  <div class="modal-header">
+	    <a class="close" data-dismiss="modal">&times;</a>
+	    <h3>Add New Widget</h3>
+	  </div>
+	  <div class="modal-body">
+			  	<div class="span1">
+		    <a href="#" onclick="createDashboardWidget('clock')" class="btn btn-success">
+		        <i class="icon-time icon-white"></i>
+		        <span><strong>Clock</strong></span>            
+		    </a>
+		</div>
+		<div class="span1">
+			<a href="#" onclick="createDashboardWidget('chart')" class="btn btn-success">
+		        <i class="icon-eye-open icon-white"></i>
+		        <span><strong>View</strong></span>        	
+		    </a>
+		</div>
+		<div class="span1">
+		    <a href="#" class="btn btn-success">
+		        <i class="icon-edit icon-white"></i>
+		        <span><strong>Edit</strong></span>       
+		    </a> 	
+		</div>
+		<div class="span1">
+		    <a href="#" class="btn btn-success">
+		    	<i class="icon-trash icon-white"></i>
+			    <span><strong>Delete</strong></span>        	
+		    </a>
+		</div>
+
+	  </div>
+	  <div class="modal-footer">
+	    <a href="#" class="btn" btn-primary" data-dismiss="modal">Close</a>
+	    <!--
+	    	<a href="#" class="btn btn-primary">Save Changes</a>
+	    -->
+	  </div>
+	</div>
+
+
+<script type="text/javascript">
+$(function(){ //DOM Ready
+    
+    initDashup();
+
+});
+
+
+function createDashboardWidget(widgetType){
+	if (widgetType=='clock'){
+		createClockWidget();
+	} else if (widgetType=='chart'){
+		createChartWidget();
+	}
+	$('#addWidget_modal').modal('hide');
+}
+
+</script>
+
+</body>
+
+
+
+</html>
