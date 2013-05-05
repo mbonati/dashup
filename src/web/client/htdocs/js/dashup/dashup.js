@@ -9,7 +9,7 @@ function initDashup(){
         widget_margins: [5, 5],
         min_cols : 5,
         extra_cols: 0,
-        widget_base_dimensions: [200, 200]
+        widget_base_dimensions: [100, 100]
     });
  	
   	gridster = $(".gridster ul").gridster().data('gridster');
@@ -41,22 +41,28 @@ function createClockWidget(){
 	var initCfg = {
 		title: 'Simple Chart Widget',
 		template: 'widgets/clock.widget.html',
-		size: [1,1],
+		size: [2,2],
 		position: [1,1]
 	};
 	createWidget(initCfg);
 
 }
 
-function createSimpleFooWidget(){
-	createWidget('widgets/simple-foo.widget.html',1,1);
+function createTextWidget(){
+	var initCfg = {
+		title: 'Simple Chart Widget',
+		template: 'widgets/text.widget.html',
+		size: [4,1],
+		position: [1,1]
+	};
+	createWidget(initCfg);
 }
 
 function createChartWidget(){
 	var initCfg = {
 		title: 'Simple Chart Widget',
 		template: 'widgets/chart.widget.html',
-		size: [1,1],
+		size: [2,2],
 		position: [1,1]
 	};
 	createWidget(initCfg);
@@ -72,10 +78,7 @@ function createWidget(initConfig){
 							   };
 			gridster.add_widget('<li class="new">'+compiled(widgetConfig)+'</li>',
 			 					initConfig.size[0], 
-			 					initConfig.size[1],
-			 					initConfig.position[0], 
-			 					initConfig.position[1]
-			 					);
+			 					initConfig.size[1]);
 		});
 
 }

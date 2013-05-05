@@ -113,13 +113,13 @@
 		<div class="span1">
 			<a href="#" onclick="createDashboardWidget('chart')" class="btn btn-success">
 		        <i class="icon-eye-open icon-white"></i>
-		        <span><strong>View</strong></span>        	
+		        <span><strong>Chart</strong></span>        	
 		    </a>
 		</div>
 		<div class="span1">
-		    <a href="#" class="btn btn-success">
+		    <a href="#" onclick="createDashboardWidget('text')" class="btn btn-success">
 		        <i class="icon-edit icon-white"></i>
-		        <span><strong>Edit</strong></span>       
+		        <span><strong>Text</strong></span>       
 		    </a> 	
 		</div>
 		<div class="span1">
@@ -152,6 +152,8 @@ function createDashboardWidget(widgetType){
 		createClockWidget();
 	} else if (widgetType=='chart'){
 		createChartWidget();
+	} else if (widgetType=='text'){
+		createTextWidget();
 	}
 	$('#addWidget_modal').modal('hide');
 }
