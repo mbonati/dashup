@@ -41,7 +41,7 @@ function createClockWidget(){
 	var initCfg = {
 		title: 'Simple Chart Widget',
 		template: 'widgets/clock.widget.html',
-		size: [3,1],
+		size: [1,1],
 		position: [1,1]
 	};
 	createWidget(initCfg);

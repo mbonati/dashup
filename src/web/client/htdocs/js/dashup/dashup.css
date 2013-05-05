@@ -58,12 +58,32 @@
 
 .big-text {
 	color: #FFFFFF;
-   	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-	font-size: 24pt;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-size: 30pt;
 	font-weight: bold;
 } 
 
+.small-text {
+  color: #FFFFFF;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-size: 8pt;
+  font-weight: normal;
+} 
 
+.normal-text {
+  color: #FFFFFF;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-size: 10pt;
+  font-weight: normal;
+} 
+
+.dark-bk-color {
+    background: #2a2a2a;
+}
+
+.normal-bk-color {
+    background: #272727;
+}
 
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
 [hidden] { display: none; }
