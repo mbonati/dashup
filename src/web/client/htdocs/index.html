@@ -35,6 +35,8 @@
 	<link rel="stylesheet" type="text/css" href="js/retro-easy-pie-chart/jquery.easy-pie-chart.css">
 	<script type="text/javascript" src="js/retro-easy-pie-chart/jquery.easy-pie-chart.js"  charset="utf-8"></script>
 
+	<!-- Socket.io client -->
+	<script src="/socket.io/socket.io.js"></script>
 
 	<!-- Pie Menu -->
 	<!--
@@ -123,9 +125,9 @@
 		    </a> 	
 		</div>
 		<div class="span1">
-		    <a href="#" class="btn btn-success">
+		    <a href="#" onclick="createDashboardWidget('counter')"  class="btn btn-success">
 		    	<i class="icon-trash icon-white"></i>
-			    <span><strong>Delete</strong></span>        	
+			    <span><strong>Counter</strong></span>        	
 		    </a>
 		</div>
 
@@ -154,6 +156,8 @@ function createDashboardWidget(widgetType){
 		createChartWidget();
 	} else if (widgetType=='text'){
 		createTextWidget();
+	} else if (widgetType=='counter'){
+		createCounterWidget();
 	}
 	$('#addWidget_modal').modal('hide');
 }

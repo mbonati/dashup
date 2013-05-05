@@ -1,11 +1,19 @@
 <div class="dashup-widget">
 	<div class="dashup-widget-header">
-		<%= title %>
+		Counter
 	</div>
 	<div class="dashup-widget-content text-widget-content">
-		<a class="text-widget-content">Text Widget</a>
+		<a class="text-widget-content" id="counter-<%= wuid %>">--</a>
   	</div>
 	<div class="dashup-widget-footer">
 		qui ci va il footer
 	</div>
 </div>
+
+<script>
+
+  socket.on('simple-counter',function(data){
+  	$('#counter-<%= wuid %>').html(data);
+  });
+
+</script>

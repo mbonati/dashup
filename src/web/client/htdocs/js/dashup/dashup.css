@@ -92,4 +92,14 @@ ul, ol {
     list-style: none;
 }
 
+.text-widget-content {
+  text-align: center;
+  font-size: 24pt;
+  font-weight: bold;
+  margin-top: 14pt;
+  text-align: left;
+  padding-left: 2%;
+  width: 98%;
+} 
+
 

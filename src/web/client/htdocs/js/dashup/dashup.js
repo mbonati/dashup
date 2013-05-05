@@ -1,5 +1,5 @@
 var gridster;
-
+var socket;
 
 /**
  * Initialize the Dashup app
@@ -13,6 +13,8 @@ function initDashup(){
     });
  	
   	gridster = $(".gridster ul").gridster().data('gridster');
+
+ 	socket = io.connect();
 }
 
 /**
@@ -50,7 +52,7 @@ function createClockWidget(){
 
 function createTextWidget(){
 	var initCfg = {
-		title: 'Simple Chart Widget',
+		title: 'Simple Text Widget',
 		template: 'widgets/text.widget.html',
 		size: [4,1],
 		position: [1,1]
@@ -63,6 +65,16 @@ function createChartWidget(){
 		title: 'Simple Chart Widget',
 		template: 'widgets/chart.widget.html',
 		size: [2,2],
+		position: [1,1]
+	};
+	createWidget(initCfg);
+}
+
+function createCounterWidget(){
+	var initCfg = {
+		title: 'Simple Realtime Counter Widget',
+		template: 'widgets/counter.widget.html',
+		size: [1,1],
 		position: [1,1]
 	};
 	createWidget(initCfg);
