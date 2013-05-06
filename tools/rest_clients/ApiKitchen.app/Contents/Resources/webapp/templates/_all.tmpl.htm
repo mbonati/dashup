@@ -1,0 +1,102 @@
+<script id="tabTmpl" type="text/x-jquery-tmpl">
+  <div style="float:right;">
+    <div class="keyboard"><a href="#keyboard-manual" id="inline">Keyboard shortcuts available</a></div>
+  </div>
+  <div style="text-align: center; display: none;">
+    <div class="notice"><div class="notice-badge-error">&nbsp;</div><div class="notice-message">An internal error has occurred</div></div>
+  </div>
+  <div class="request-section">
+    <form id="${formId}" action="">
+    <div style="display:table;width:100%; padding: 10px;">
+      <div style="display:table-cell;width:100px">
+        <select style="font-size: 16px;" name="method">
+          <option value="get">GET</option>
+          <option value="post">POST</option>
+          <option value="put">PUT</option>
+          <option value="delete">DELETE</option>
+          <option value="head">HEAD</option>
+        </select>
+      </div>
+      <input type="text" name="url" class="url" style="font: 16px;display:table-cell; width:100%" value="">
+    </div>
+    <div class="empty-band"></div>
+    <div class="request-options">
+      <div class="post-params">
+        <div class="request-params">
+        </div>
+        <div class="request-post-body" style="display:none;">
+          <p>
+            <textarea style="width: 100%;height:50px" name="body"></textarea>
+          </p>
+        </div>
+        <div class="request-post-file" style="display:none;">
+          <p>
+            <input type="file" style="width: 100%;" name="file">
+          </p>
+        </div>
+      </div>
+      <div class="section-footer">
+        <a href="javascript: void(0);" class="add-param">+ Add a param</a> | <a href="javascript: void(0);" class="post-body">&bull; Set POST body</a><!-- | <a href="#" class="post-file">&bull; Set upload file</a>-->
+      </div>
+      <div class="request-headers">
+      </div>
+      <div class="section-footer">
+        <a href="javascript: void(0);" class="add-header">+ Add a header</a>
+      </div>
+      <div style="display: none;" class="auth-params">
+        <p>
+          <input type="text" value="" class="params-col1" name="auth.name" />
+          <input type="password" value="" class="params-col2" name="auth.password"/>
+        </p>
+      </div>
+      <div class="section-footer">
+        <a href="javascript: void(0);" class="toggle-auth">+ Enable HTTP Basic Auth</a>
+      </div>
+    </div>
+    </form>
+    <div class="empty-band"></div>
+    <div class="send-button-bar">
+      <button class="g-button medium execute" onclick="javascript: void(0);" tabId="${tabId}">Execute</button>
+    </div>
+  </div>
+  <div class="response-section">
+    
+  </div>
+</script>
+
+<script id="responseSectionTmpl" type="text/x-jquery-tmpl">
+  <div class="segmented_control">
+    <button type="button" class="back-to-request left_section" tabId="${tabId}"><span class="back-icon">Back</span></button>
+    <button type="button" class="execute-again middle_section" tabId="${tabId}"><span class="run-icon">Execute again</span></button>
+    <button type="button" class="clone middle_section" tabId="${tabId}"><span class="copy-icon">Clone Tab</span></button>
+    <button type="button" class="permalink right_section" tabId="${tabId}"><span class="permalink-icon">Permalink</span></button>
+  </div>
+  <span class="permalink-container"><input class="permalink-input" value="${sink.recipe_url}"></span>
+
+  <div class="empty-band"></div>
+  <span class="response-status-code"><span class="highlight_dark">${sink.status_code_tech}</span><!--<small> ${sink.status_code_human}</small>--></span>&nbsp;<span class="final-url">${sink.finalUrl}</span>
+  <div class="clearwrap"></div>
+  {{if sink.requestHeaders.length}}
+  <h3 style="display: inline;">Request Headers</h3>&nbsp;<a href="javascript: void(0);" class="next-toggle" style="text-decoration:none;font-size:11px; font-weight:bold">[hide]</a>
+  <pre><code>{{each sink.requestHeaders}}<span class="number">${$index}</span><span class="string">${$value}</span><br>{{/each}}</code></pre>
+  {{/if}}
+  <div class="empty-band"></div>
+  <!--<h3 style="display: inline;">Response Headers</h3>&nbsp;<a href="javascript: void(0);" class="next-toggle" style="text-decoration:none;font-size:11px; font-weight:bold">[hide]</a>-->
+  Response headers: <a href="javascript: void(0);"><div class="hide-section on"></div></a>
+  <div class="clearwrap top-border"></div>
+  <pre><code class="INI">{{each sink.responseHeaders}}<span class="string">${$index}</span>: <span class="number">${$value}</span><br>{{/each}}</code></pre>
+  <div class="empty-band"></div>
+  <!--<h3 style="display: inline;">Response</h3>&nbsp;<a href="javascript: void(0);" class="next-toggle" style="text-decoration:none;font-size:11px; font-weight:bold">[hide]</a>-->
+  Response content: <a href="javascript: void(0);"><div class="hide-section on"></div></a>
+  <div class="clearwrap top-border"></div>
+  <pre class="response-content"><code class="${sink.content_lang}">${sink.response}</code></pre>
+  <div class="clearwrap"></div>
+</script>
+
+<script id="addHeaderTmpl" type="text/x-jquery-tmpl">
+  <p>
+    <input type="text" value="" class="params-col1 request-header-names" name="${name}s[${index}].name" tag="${name}s-${index}-name"/>
+    <input type="text" value="" class="params-col2" name="${name}s[${index}].value" tag="${name}s-${index}-value"/>
+    <a href="javascript: void(0);" class="delete-icon delete-row"></a>
+  </p>
+</script>
