@@ -17,6 +17,14 @@ function initDashup(){
  	socket = io.connect();
 }
 
+function lockDashboard(){
+	gridster.disable();
+}
+function unlockDashboard(){
+	gridster.enable();
+}
+
+
 /**
  * Generate an unique id useful for creating dynamic functions
  */
@@ -60,10 +68,10 @@ function createTextWidget(){
 	createWidget(initCfg);
 }
 
-function createChartWidget(){
+function createGaugeWidget(){
 	var initCfg = {
-		title: 'Simple Chart Widget',
-		template: 'widgets/chart.widget.html',
+		title: 'Simple Gauge Widget',
+		template: 'widgets/gauge.widget.html',
 		size: [2,2],
 		position: [1,1]
 	};
@@ -72,9 +80,19 @@ function createChartWidget(){
 
 function createCounterWidget(){
 	var initCfg = {
-		title: 'Simple Realtime Counter Widget',
+		title: 'Logins',
 		template: 'widgets/counter.widget.html',
 		size: [1,1],
+		position: [1,1]
+	};
+	createWidget(initCfg);
+}
+
+function createTimeSeriesWidget(){
+	var initCfg = {
+		title: 'Simple Time Series Widget',
+		template: 'widgets/timeseries.widget.html',
+		size: [4,2],
 		position: [1,1]
 	};
 	createWidget(initCfg);

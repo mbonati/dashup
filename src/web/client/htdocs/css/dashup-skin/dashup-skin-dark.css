@@ -1,33 +1,13 @@
+body {
+	/*background-image: url('../../images/backgrounds/navy_blue.png');*/
+	background: #282827 url('../../images/backgrounds/pattern-2.png') repeat top left;
+}
+
+.logo {
+	background-image: url('../../images/dashup_logo_inset.png');
+}
+
 .gridster .gs_w {
     background: #2a2a2a;
 }
 
-.dashup-widget-header {
-	background: #272727;
-	color:#828282;
-}
-
-.dashup-widget-content {
-	background: #2a2a2a;
-}
-
-.dashup-widget-footer {
-	background: #272727;
-	color:#828282;
-}
-
-.big-text {
-	color: #FFFFFF;
-} 
-
-.dark-bk-color {
-    background: #2a2a2a;
-}
-
-.normal-bk-color {
-    background: #272727;
-}
-
-.text-widget-content {
-	color: #FFFFFF;
-}

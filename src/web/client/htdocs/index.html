@@ -8,8 +8,26 @@
 	<!-- JQuery main -->
 	<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
 
+
+	<!-- Modernizr -->
+  	<script src="js/groundwork/js/libs/modernizr-2.6.2.min.js"></script>
+	<!-- Groundwork -->
+	<link type="text/css" rel="stylesheet" href="js/groundwork/css/groundwork.css">
+	<!--[if IE]>
+	<link type="text/css" rel="stylesheet" href="js/groundwork/css/groundwork-ie.css">
+	<![endif]-->
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="js/groundwork/js/libs/html5shiv.min.js"></script>
+	<![endif]-->
+	<!--[if IE 7]>
+	<link type="text/css" rel="stylesheet" href="js/groundwork/css/font-awesome-ie7.min.css">
+	<![endif]-->
+  	<script type="text/javascript" src="js/groundwork/js/groundwork.all.js"></script>
+
+
 	<!-- Bootstrap -->
 	<!--<link rel="stylesheet" type="text/css" href="js/bootstrap/css/bootstrap.min.css">-->
+	<!--
 	<link rel="stylesheet" type="text/css" href="js/bootstrap/css/bootstrap-cosmo.min.css">
 	<script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js"></script>
 	<style>
@@ -18,10 +36,14 @@
       }
     </style>
     <link href="js/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+	-->
 
 	<!-- Gridster Dashboard -->
 	<link rel="stylesheet" type="text/css" href="js/gridster/jquery.gridster.min.css">
 	<script type="text/javascript" src="js/gridster/jquery.gridster.js"  charset="utf-8"></script>
+
+	<!-- leanModal -->
+	<script type="text/javascript" src="js/leanModal/jquery.leanModal.min.js"  charset="utf-8"></script>
 
 	<!-- Undescore -->
 	<script type="text/javascript" src="js/underscore/underscore.min.js"  charset="utf-8"></script>
@@ -36,133 +58,143 @@
 	<link rel="stylesheet" type="text/css" href="js/retro-easy-pie-chart/jquery.easy-pie-chart.css">
 	<script type="text/javascript" src="js/retro-easy-pie-chart/jquery.easy-pie-chart.js"  charset="utf-8"></script>
 
+	<!-- Charts -->
+	<script src="/js/highcharts/highcharts.js"></script>
+	<script src="/js/highcharts/modules/exporting.js"></script>
+	<script src="/js/highcharts/themes/gray.js"></script>
+
 	<!-- Socket.io client -->
 	<script src="/socket.io/socket.io.js"></script>
-
-	<!-- Pie Menu -->
-	<!--
-	<link rel="stylesheet" type="text/css" href="js/pie-menu/css/piemenu.css">
-	<script type="text/javascript" src="js/pie-menu/js/jquery.menu.js"  charset="utf-8"></script>
-	-->
 
 	<!-- DashUp Core -->
 	<script type="text/javascript" src="js/uuid.js"  charset="utf-8"></script>
 	<script type="text/javascript" src="js/dashup/dashup.js"  charset="utf-8"></script>
-	<link rel="stylesheet" type="text/css" href="js/dashup/dashup.css">
+	<link rel="stylesheet" href="js/dashup/dashup.css">
 
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/dashup-skin/dashup-skin-dark.css">
-
+	
 </head>
 <body>
 
 
-<div class="container">
+<div class="dashup-container">
 
-	<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="brand" href="#">Dashup</a>
-      <div class="nav-collapse">
-        <!--a  href="#addWidget_modal" data-toggle="modal" class="btn btn-success btn-small">Add Widget</a-->
-        <a  href="#addWidget_modal" data-toggle="modal" class="btn btn-success btn-small">Add Widget</a>
-      </div>
-    </div>
-  </div>
-</div>
+		<div class="row header">
+			<div id="logo" class="seven tenths"><img class="header-logo" src="images/dashup_logo.png"></div>
+			<div id="toolbar" class="three tenths">
+				<div class="header-buttons">
+					<ul class="button-list small asphalt" style="">
+						<li><a href="#" onclick="createDashboardWidget('clock')"><span>Add widget...</span></a></li>
+							<li><a href="#" onclick="createDashboardWidget('clock')"><span>Clock</span></a></li>
+							<li><a href="#" onclick="createDashboardWidget('gauge')"><span>Gauge</span></a></li>
+							<li><a href="#" onclick="createDashboardWidget('text')"><span>Text</span></a></li>
+							<li><a href="#" onclick="createDashboardWidget('counter')"><span>Counter</span></a></li>
+					</ul>
+					<!--
+					<div class="select-wrap small">
+						<select>
+							<option>Main Dashboard</option>
+							<option>New Dashboard</option>
+						</select>
+					</div>
+					<button class="dropdown small asphalt">Settings
+						<ul>
+							<li><a href="#" onclick="createDashboardWidget('clock')"><span>Add widget...</span></a></li>
+							<li><a href="#" onclick="createDashboardWidget('clock')"><span>Clock</span></a></li>
+							<li><a href="#" onclick="createDashboardWidget('gauge')"><span>Gauge</span></a></li>
+							<li><a href="#" onclick="createDashboardWidget('text')"><span>Text</span></a></li>
+							<li><a href="#" onclick="createDashboardWidget('counter')"><span>Counter</span></a></li>
+					</button>
+				-->
+				</div>
+			</div>
+		</div>
 
+		<div id="user-toolbar-options" class="toolbar-icons" style="display: none;">
+			<a href="#"><i class="icon-user"></i></a>
+			<a href="#"><i class="icon-star"></i></a>
+			<a href="#"><i class="icon-edit"></i></a>
+			<a href="#"><i class="icon-delete"></i></a>
+			<a href="#"><i class="icon-ban"></i></a>
+		</div>
 
 
 		<!-- Dashboard Widgets -->
 		<div class="gridster">
 		    <ul>
-		    	<!--
-		        <li data-row="1" data-col="1" data-sizex="1" data-sizey="1"></li>
-		        <li data-row="2" data-col="1" data-sizex="1" data-sizey="1"></li>
-		        <li data-row="3" data-col="1" data-sizex="1" data-sizey="1"></li>
-		 
-		        <li data-row="1" data-col="2" data-sizex="2" data-sizey="1"></li>
-		        <li data-row="2" data-col="2" data-sizex="2" data-sizey="2"></li>
-		 
-		        <li data-row="1" data-col="4" data-sizex="1" data-sizey="1"></li>
-		        <li data-row="2" data-col="4" data-sizex="2" data-sizey="1"></li>
-		        <li data-row="3" data-col="4" data-sizex="1" data-sizey="1"></li>
-		 
-		        <li data-row="1" data-col="5" data-sizex="1" data-sizey="1"></li>
-		        <li data-row="3" data-col="5" data-sizex="1" data-sizey="1"></li>
-		 
-		        <li data-row="1" data-col="6" data-sizex="1" data-sizey="1"></li>
-		        <li data-row="2" data-col="6" data-sizex="1" data-sizey="2"></li>
-		    -->
 		    </ul>
 		</div>
 
 </div>
 
-
-	<!-- Add Widget Popup -->
-	<div class="modal fade" id="addWidget_modal">
-	  <div class="modal-header">
-	    <a class="close" data-dismiss="modal">&times;</a>
-	    <h3>Add New Widget</h3>
-	  </div>
-	  <div class="modal-body">
-			  	<div class="span1">
-		    <a href="#" onclick="createDashboardWidget('clock')" class="btn btn-success">
-		        <i class="icon-time icon-white"></i>
-		        <span><strong>Clock</strong></span>            
-		    </a>
-		</div>
-		<div class="span1">
-			<a href="#" onclick="createDashboardWidget('chart')" class="btn btn-success">
-		        <i class="icon-eye-open icon-white"></i>
-		        <span><strong>Chart</strong></span>        	
-		    </a>
-		</div>
-		<div class="span1">
-		    <a href="#" onclick="createDashboardWidget('text')" class="btn btn-success">
-		        <i class="icon-edit icon-white"></i>
-		        <span><strong>Text</strong></span>       
-		    </a> 	
-		</div>
-		<div class="span1">
-		    <a href="#" onclick="createDashboardWidget('counter')"  class="btn btn-success">
-		    	<i class="icon-trash icon-white"></i>
-			    <span><strong>Counter</strong></span>        	
-		    </a>
-		</div>
-
-	  </div>
-	  <div class="modal-footer">
-	    <a href="#" class="btn" btn-primary" data-dismiss="modal">Close</a>
-	    <!--
-	    	<a href="#" class="btn btn-primary">Save Changes</a>
-	    -->
-	  </div>
-	</div>
-
-
 <script type="text/javascript">
 $(function(){ //DOM Ready
-    
+
     initDashup();
 
-});
+    createDashboardWidget('clock');
+    createDashboardWidget('text');
+    createDashboardWidget('gauge');
 
+});
 
 function createDashboardWidget(widgetType){
 	if (widgetType=='clock'){
 		createClockWidget();
-	} else if (widgetType=='chart'){
-		createChartWidget();
+	} else if (widgetType=='gauge'){
+		createGaugeWidget();
 	} else if (widgetType=='text'){
 		createTextWidget();
 	} else if (widgetType=='counter'){
 		createCounterWidget();
+	} else if (widgetType=='timeSeries'){
+		createTimeSeriesWidget();
 	}
-	$('#addWidget_modal').modal('hide');
 }
 
+</script>
+
+
+<script>
+	Highcharts.theme = {
+    colors: ["#DDDF0D", "#55BF3B", "#DF5353", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
+		"#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
+	chart: {
+		backgroundColor: '#2a2a2a',
+		borderColor: '#000000',
+		borderWidth: 0,
+		className: 'dark-container',
+		plotBackgroundColor: 'rgba(255, 255, 255, .1)',
+		plotBorderColor: '#CCCCCC',
+		plotBorderWidth: 0
+	},
+    title: {
+        style: {
+            color: '#000',
+            font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
+        }
+    },
+    subtitle: {
+        style: {
+            color: '#666666',
+            font: 'bold 12px "Trebuchet MS", Verdana, sans-serif'
+        }
+    },
+
+    legend: {
+        itemStyle: {
+            font: '9pt Trebuchet MS, Verdana, sans-serif',
+            color: 'black'
+        },
+        itemHoverStyle:{
+            color: 'gray'
+        }   
+    }
+};
+
+// Apply the theme
+Highcharts.setOptions(Highcharts.theme);
 </script>
 
 </body>

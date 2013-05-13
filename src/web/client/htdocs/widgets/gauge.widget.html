@@ -1,0 +1,50 @@
+<!--
+<div class="dashup-widget">
+	<div class="dashup-widget-header">
+		<%= title %>
+	</div>
+	<div class="dashup-widget-content" style="text-align: center;">
+		<div class="chart" data-percent="73" id="piechart-<%= id %>" style="display: inline-block;top: 24px;">CPU %</div>
+  	</div>
+	<div class="dashup-widget-footer">
+		qui ci va il footer
+	</div>
+</div>
+-->
+
+<div class="dashup-widget" >
+		<div class="widget-header">
+			<div class="widget-header-content">
+				<%= title %>
+			</div>
+		</div>
+		<div class="widget-container">
+			<div class="widget-container-content" style="text-align: center;">
+				<div class="chart" data-percent="0" id="piechart-<%= wuid %>" style="display: inline-block;top: 24px;"><a id="piechart-valuetext-<%= wuid %>" >--%</a></div>
+			</div>
+		</div>
+		<div class="widget-footer">
+			<a class="widget-footer-content">footer</a>
+		</div>
+</div>
+
+
+<script type="text/javascript">
+$(function() {
+    $('#piechart-<%= wuid %>').easyPieChart({
+    	lineWidth: 12,
+    	lineCap: 'butt',
+    	trackColor: '#46503d',
+    	barColor: '#79ab4a',
+    	animate: 1000
+    });
+});
+
+ socket.on('updateValue.gauge.simpleExample',function(data){
+  	console.log("update data arrived for "+ data);
+  	$('#piechart-<%= wuid %>').data('easyPieChart').update(data.value);
+  	$('#piechart-valuetext-<%= wuid %>').text(data.value + "%");
+
+  });
+
+</script>

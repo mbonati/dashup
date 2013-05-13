@@ -1,10 +1,11 @@
 body {
+	width: 100%;
 	background: #101214;
    	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 }
 
-.gridster .gs_w {
-    cursor: pointer;
+.logo {
+	background-image: url('../images/dashup_logo_inset.png');
 }
 
 
@@ -12,7 +13,4 @@ body {
    NORMALIZATION
 ========================================================================== */
 
-*  {
-  margin: 0;
-  padding: 0;
-}
+

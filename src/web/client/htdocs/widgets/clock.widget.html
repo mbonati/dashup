@@ -1,16 +1,37 @@
-
+<!--
 <div class="dashup-widget">
-	<div style="height:50px;margin:20px">
-		<a class="big-text" id="time<%= wuid %>"></a>
-		<a class="normal-text" id="time_a<%= wuid %>">--</a>
+	<div class="container" style="background: BLUE;height: 100%;">
+		<div class="row" style="border: solid 1px green;" >
+			<a class="big-text" id="time<%= wuid %>"></a>
+			<a class="normal-text" id="time_a<%= wuid %>">--</a>
+		</div>
+		<div class="row" style="background-color: #111111;border: solid 1px green;">
+			<p><a class="normal-text" id="day<%= wuid %>">--</a></p>
+			<p><a class="normal-text" id="date<%= wuid %>">--</a></p>
+		</div>
+		<div class="row" style="background-color:red;border: solid 1px green;position: absolute; bottom: 0;">
+			qui ci va il footer
+		</div>
 	</div>
-	<div class="dark-bk-color" style="background-color: #2a2a2a;line-height: 8px;margin:20px">
-		<p><a class="normal-text" id="day<%= wuid %>">--</a></p>
-		<p><a class="normal-text" id="date<%= wuid %>">--</a></p>
-	</div>
-	<div class="dashup-widget-footer">
-		qui ci va il footer
-	</div>
+</div>
+-->
+<div class="dashup-widget" >
+		<div class="widget-header" style="height:90px;">
+			<div class="widget-header-content" style="padding: 10px;">				
+				<a class="big-text light-text" id="time<%= wuid %>"></a>
+				<a class="normal-text light-text" id="time_a<%= wuid %>">--</a>
+			</div>
+		</div>
+		<div class="widget-container" style="top:90px;">
+			<div class="widget-container-content" style="top:48px;padding: 10px;line-height: 15px;">
+				<a class="normal-text gray-text" id="day<%= wuid %>">--</a><br>
+				<a class="normal-text gray-text" id="date<%= wuid %>">--</a>
+			</div>
+		</div>
+		<div class="widget-footer">
+			<a class="widget-footer-content">footer</a>
+		</div>
+	</table>
 </div>
 
 
