@@ -56,6 +56,7 @@ restfulApp.post('/sayHello', function (request, response) {
 });
 
 restfulApp.post('/updateValue', function (request, response) {
+  console.log("updateValue body '" + JSON.stringify(request.body)+"'");
 	console.log("updateValue called for " + request.body.wid);
 	if (updateValue(request.body)){
 	    response.json({result: 'OK'});
