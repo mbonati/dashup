@@ -98,6 +98,16 @@ function createTimeSeriesWidget(){
 	createWidget(initCfg);
 }
 
+function createLineChartWidget(){
+	var initCfg = {
+		title: 'Line Chart Widget',
+		template: 'widgets/line.chart.widget.html',
+		size: [4,2],
+		position: [1,1]
+	};
+	createWidget(initCfg);
+}
+
 function createWidget(initConfig){
 
 	$.get(initConfig.template, function(template) {

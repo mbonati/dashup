@@ -59,9 +59,17 @@
 	<script type="text/javascript" src="js/retro-easy-pie-chart/jquery.easy-pie-chart.js"  charset="utf-8"></script>
 
 	<!-- Charts -->
-	<script src="/js/highcharts/highcharts.js"></script>
-	<script src="/js/highcharts/modules/exporting.js"></script>
-	<script src="/js/highcharts/themes/gray.js"></script>
+		<!-- highcharts -->
+		<!--
+		<script src="/js/highcharts/highcharts.js"></script>
+		<script src="/js/highcharts/modules/exporting.js"></script>
+		<script src="/js/highcharts/themes/gray.js"></script>
+		-->
+		<!-- morris -->
+		<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+		<link rel="stylesheet" type="text/css" href="js/morris/morris.css">
+		<script src="js/morris/morris.min.js"></script>
+	<!-- end Charts -->
 
 	<!-- Socket.io client -->
 	<script src="/socket.io/socket.io.js"></script>
@@ -85,11 +93,12 @@
 			<div id="toolbar" class="three tenths">
 				<div class="header-buttons">
 					<ul class="button-list small asphalt" style="">
-						<li><a href="#" onclick="createDashboardWidget('clock')"><span>Add widget...</span></a></li>
+						<li><a href="#" onclick="createDashboardWidget('chart')"><span>Add widget...</span></a></li>
 							<li><a href="#" onclick="createDashboardWidget('clock')"><span>Clock</span></a></li>
 							<li><a href="#" onclick="createDashboardWidget('gauge')"><span>Gauge</span></a></li>
 							<li><a href="#" onclick="createDashboardWidget('text')"><span>Text</span></a></li>
 							<li><a href="#" onclick="createDashboardWidget('counter')"><span>Counter</span></a></li>
+							<li><a href="#" onclick="createDashboardWidget('lineChart')"><span>Line</span></a></li>
 					</ul>
 					<!--
 					<div class="select-wrap small">
@@ -150,6 +159,8 @@ function createDashboardWidget(widgetType){
 		createCounterWidget();
 	} else if (widgetType=='timeSeries'){
 		createTimeSeriesWidget();
+	} else if (widgetType=='lineChart'){
+		createLineChartWidget();
 	}
 }
 
