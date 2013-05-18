@@ -6,11 +6,16 @@
     "start": "node app"
   },
   "dependencies": {
-    "express": "*",
-    "connect": "*",
-    "levelup": "*",
-    "socket.io": "*",
-    "passport": "*",
-    "passport-local": "*"
+    "asciimo": "0.3.1",
+    "colors": "0.6.0-1",
+    "sys": "0.0.1",
+    "express": "3.2.2",
+    "connect": "2.7.8",
+    "levelup": "0.8.0",
+    "socket.io": "0.9.14",
+    "passport": "0.1.17",
+    "passport-local": "0.1.6",
+    "stylus": "0.31.0",
+    "jade": "0.27.7"
   }
 }
