@@ -42,6 +42,10 @@
 	<link rel="stylesheet" type="text/css" href="js/gridster/jquery.gridster.min.css">
 	<script type="text/javascript" src="js/gridster/jquery.gridster.js"  charset="utf-8"></script>
 
+	<!-- Sidr menu -->
+	<link rel="stylesheet" type="text/css" href="js/sidr/stylesheets/jquery.sidr.dark.css">
+	<script src="js/sidr/jquery.sidr.min.js"></script>
+
 	<!-- leanModal -->
 	<script type="text/javascript" src="js/leanModal/jquery.leanModal.min.js"  charset="utf-8"></script>
 
@@ -99,23 +103,8 @@
 							<li><a href="#" onclick="createDashboardWidget('text')"><span>Text</span></a></li>
 							<li><a href="#" onclick="createDashboardWidget('counter')"><span>Counter</span></a></li>
 							<li><a href="#" onclick="createDashboardWidget('lineChart')"><span>Line</span></a></li>
+							<li><a id="settings-menu" href="#sidr">Settings</a></li>
 					</ul>
-					<!--
-					<div class="select-wrap small">
-						<select>
-							<option>Main Dashboard</option>
-							<option>New Dashboard</option>
-						</select>
-					</div>
-					<button class="dropdown small asphalt">Settings
-						<ul>
-							<li><a href="#" onclick="createDashboardWidget('clock')"><span>Add widget...</span></a></li>
-							<li><a href="#" onclick="createDashboardWidget('clock')"><span>Clock</span></a></li>
-							<li><a href="#" onclick="createDashboardWidget('gauge')"><span>Gauge</span></a></li>
-							<li><a href="#" onclick="createDashboardWidget('text')"><span>Text</span></a></li>
-							<li><a href="#" onclick="createDashboardWidget('counter')"><span>Counter</span></a></li>
-					</button>
-				-->
 				</div>
 			</div>
 		</div>
@@ -126,6 +115,17 @@
 			<a href="#"><i class="icon-edit"></i></a>
 			<a href="#"><i class="icon-delete"></i></a>
 			<a href="#"><i class="icon-ban"></i></a>
+		</div>
+
+
+
+		<div id="sidr">
+		  <!-- Your content -->
+		  <ul>
+		    <li><a href="#">List 1</a></li>
+		    <li class="active"><a href="#">List 2</a></li>
+		    <li><a href="#">List 3</a></li>
+		  </ul>
 		</div>
 
 
@@ -145,6 +145,10 @@ $(function(){ //DOM Ready
     createDashboardWidget('clock');
     createDashboardWidget('text');
     createDashboardWidget('gauge');
+
+	$('#settings-menu').sidr({
+		side: 'right'
+	});
 
 });
 
@@ -167,46 +171,6 @@ function createDashboardWidget(widgetType){
 </script>
 
 
-<script>
-	Highcharts.theme = {
-    colors: ["#DDDF0D", "#55BF3B", "#DF5353", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
-		"#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
-	chart: {
-		backgroundColor: '#2a2a2a',
-		borderColor: '#000000',
-		borderWidth: 0,
-		className: 'dark-container',
-		plotBackgroundColor: 'rgba(255, 255, 255, .1)',
-		plotBorderColor: '#CCCCCC',
-		plotBorderWidth: 0
-	},
-    title: {
-        style: {
-            color: '#000',
-            font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
-        }
-    },
-    subtitle: {
-        style: {
-            color: '#666666',
-            font: 'bold 12px "Trebuchet MS", Verdana, sans-serif'
-        }
-    },
-
-    legend: {
-        itemStyle: {
-            font: '9pt Trebuchet MS, Verdana, sans-serif',
-            color: 'black'
-        },
-        itemHoverStyle:{
-            color: 'gray'
-        }   
-    }
-};
-
-// Apply the theme
-Highcharts.setOptions(Highcharts.theme);
-</script>
 
 </body>
 

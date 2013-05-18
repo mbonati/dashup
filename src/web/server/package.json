@@ -6,6 +6,11 @@
     "start": "node app"
   },
   "dependencies": {
-    "connect": "*"
+    "express": "*",
+    "connect": "*",
+    "levelup": "*",
+    "socket.io": "*",
+    "passport": "*",
+    "passport-local": "*"
   }
 }
