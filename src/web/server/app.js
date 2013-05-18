@@ -96,10 +96,12 @@ passport.use(new LocalStrategy(
 //   this will be as simple as storing the user ID when serializing, and finding
 //   the user by ID when deserializing.
 passport.serializeUser(function(user, done) {
+  console.log(">>>>>>>>>>>>>> serialize user :" + user.username);
   done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
+  console.log(">>>>>>>>>>>>>> deserialize user :" + id);
   findById(id, function (err, user) {
     done(err, user);
   });
@@ -126,7 +128,6 @@ app.configure(function () {
     app.use(errorHandler);
     app.use(express.cookieParser());
     app.use(express.session({secret: 'secret', key: 'express.sid'}));
-    app.use(express.static(__dirname + "/public"));
     app.use(express.static('../client/htdocs'));
     app.use(express.bodyParser());
     app.use(passport.initialize());
@@ -190,7 +191,7 @@ function sendSignal(socket,signalName, data){
 
 
 app.post('/login',
-  passport.authenticate('local', { successRedirect: '/index.html',
+  passport.authenticate('local', { successRedirect: '/',
                                    failureRedirect: '/login.html'})
 );
 
