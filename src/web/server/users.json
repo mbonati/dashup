@@ -1,0 +1,17 @@
+[ 
+	{ "id": 1, 
+		"username": "admin", 
+		"password": "*", 
+		"email": "admin@dashup.com" 
+	},
+	{ 	"id": 2, 
+		"username": "administrator", 
+		"password": "secret", 
+		"email": "administrator@dashup.com" 
+	},
+	{ 	"id": 3, 
+		"username": "marcus", 
+		"password": "*", 
+		"email": "marcus@dashup.com" 
+	}
+]
