@@ -1,9 +1,6 @@
 dashup
 ======
 
-# dashup #
-
-
 #### Software Stack ####
 
 ##### Server side: #####
