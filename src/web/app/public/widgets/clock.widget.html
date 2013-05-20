@@ -1,0 +1,30 @@
+<div class="dashup-widget" >
+		<div class="widget-header" style="height:90px;">
+			<div class="widget-header-content" style="padding: 10px;">				
+				<a class="big-text light-text" id="time<%= wuid %>"></a>
+				<a class="normal-text light-text" id="time_a<%= wuid %>">--</a>
+			</div>
+		</div>
+		<div class="widget-container" style="top:90px;">
+			<div class="widget-container-content" style="top:48px;padding: 10px;line-height: 15px;">
+				<a class="normal-text gray-text" id="day<%= wuid %>">--</a><br>
+				<a class="normal-text gray-text" id="date<%= wuid %>">--</a>
+			</div>
+		</div>
+		<div class="widget-footer">
+			<a class="widget-footer-content">footer</a>
+		</div>
+	</table>
+</div>
+
+
+<script>
+clockTick<%= id %>();
+setInterval('clockTick<%= id %>()', 1000);
+function clockTick<%= id %>(){
+	$('#time<%= wuid %>').html(moment().format('h:mm:ss'));
+	$('#time_a<%= wuid %>').html(moment().format('a'));
+	$('#day<%= wuid %>').html(moment().format('dddd'));
+	$('#date<%= wuid %>').html(moment().format('D MMMM YYYY'));
+}
+</script>

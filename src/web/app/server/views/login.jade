@@ -1,0 +1,22 @@
+extends layout
+
+block content
+
+    link(rel='stylesheet', href='css/login.style.css')
+    //if lt IE 9
+      script(src='//html5shim.googlecode.com/svn/trunk/html5.js')
+
+    #logo
+      #logo.seven.tenths
+        img.header-logo(src='../img/dashup_logo.png', style='display: block; width: 100px; margin-left: auto; margin-right: auto; margin-top: 100px;')
+    form.login(action='/login', method='post')
+      p
+        label(for='login') User name:
+        input#login(type='text', name='user')
+      p
+        label(for='password') Password:
+        input#password(type='password', name='pass')
+      p.login-submit
+        button.login-button(type='submit') Login
+      p.forgot-password
+        a(href='login.html') Forgot your password?

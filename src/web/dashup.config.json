@@ -1,0 +1,16 @@
+{
+	"http" : {
+		"port" : 3000
+	},
+	
+	"REST" : {
+		"port" : 5000
+	},
+
+	"database" : {
+		"host": "localhost",
+		"port" : 27017,
+		"name" : "dashupdb"
+	}
+
+}

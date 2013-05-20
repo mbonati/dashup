@@ -1,0 +1,14 @@
+body {
+	/*background-image: url('../../images/backgrounds/navy_blue.png');*/
+	/*background: #282827 url('../../images/backgrounds/pattern-2.png') repeat top left;*/
+	background: #282827 url('../../images/backgrounds/bg.png') repeat top left;*/
+}
+
+.logo {
+	background-image: url('../../images/dashup_logo_inset.png');
+}
+
+.gridster .gs_w {
+    background: #2a2a2a;
+}
+

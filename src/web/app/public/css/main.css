@@ -1,0 +1,16 @@
+body {
+	width: 100%;
+	background: #101214;
+   	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+
+.logo {
+	background-image: url('../images/dashup_logo_inset.png');
+}
+
+
+/* =============================================================================
+   NORMALIZATION
+========================================================================== */
+
+

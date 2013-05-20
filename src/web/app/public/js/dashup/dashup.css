@@ -1,0 +1,211 @@
+
+.gridster .gs_w {
+    cursor: pointer;
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.dashup-widget-header {
+	width: 100%;
+}
+
+.dashup-widget {
+	width: 100%;
+	height: 100%;
+}
+
+/*
+.dashup-widget-header {
+  height: 20px;
+  top: 0;
+  position: absolute;
+  width: 96%;
+  padding-left: 2%;
+  padding-right: 2%;
+  font-size: 8pt;
+  font-weight: bold;
+}
+
+.dashup-widget-content {
+  top: 20;
+  bottom: 20;
+  position: absolute;
+  width: 100%;
+  font-size: 10pt;
+}
+
+.dashup-widget-footer {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  width: 96%;
+  padding-left: 2%;
+  padding-right: 2%;
+  font-size: 8pt;
+  font-weight: bold;
+}
+*/
+
+.big-text {
+	color: #FFFFFF;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-size: 30pt;
+	font-weight: bold;
+} 
+
+.small-text {
+  color: #FFFFFF;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-size: 8pt;
+  font-weight: normal;
+} 
+
+.normal-text {
+  color: #FFFFFF;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-size: 10pt;
+  font-weight: normal;
+} 
+
+.gray-text {
+  color: #AFAFAF;
+} 
+
+.evidence-text {
+  color: rgb(64, 177, 123);
+}
+
+.light-text {
+  color: #198d98;
+}
+
+.dark-bk-color {
+    background: #2a2a2a;
+}
+
+.normal-bk-color {
+    background: #272727;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+[hidden] { display: none; }
+
+ul, ol {
+    list-style: none;
+}
+
+.header-buttons {
+  margin-top: 5px;
+  margin-right: 4px;
+}
+
+.header-buttons ul.button-list li a, ol.button-list li a
+{
+  background: rgb(17, 86, 92);
+  border: 1px solid rgb(20, 96, 104);
+}
+
+
+.bordered-debug {
+  border: solid 1px green;
+}
+
+.gridster .gs_w {
+    cursor: pointer;
+}
+
+.dashup-widget {
+  height: 100%;
+}
+
+.dashup-container {
+  width: 100%;
+  padding: 5px;
+}
+
+.header {
+}
+
+.header-logo {
+  margin-left: 5px;
+}
+
+.header-buttons {
+  position: absolute;;
+  text-align: center;
+  right: 0;
+}
+
+
+
+/**
+ * WIDGETS globals
+ */
+ .widget-header {
+  background: rgb(34, 34, 34);
+  position: absolute;
+  height: 18px;
+  width: 100%;
+}
+
+.widget-header-content {
+  color: #8a8a8a;
+  padding: 1px;
+  padding-left: 4px;
+  padding-right: 4px;
+  font-size: 8pt;
+  font-weight: bold;
+}
+
+.widget-container {
+    position: absolute;
+  width: 100%;
+  top: 18px;
+  bottom: 18px;
+}
+
+.widget-container-content {
+  color: #FFFFFF;
+  padding: 4px;
+  font-size: 9pt;
+}
+
+.widget-footer {
+  position: absolute;
+  height: 18px; 
+  bottom: 0; 
+  width: 100%;
+}
+
+.widget-footer-content {
+  color: #7a7a7a;
+  font-size: 8pt;
+  padding: 4px;
+}
+
+
+
+
+/**
+ * Text Widget defaults 
+ */
+.text-widget-content {
+  text-align: center;
+  font-size: 24pt;
+  font-weight: bold;
+  vertical-align: center;
+  text-align: left;
+  padding-left: 2%;
+  width: 98%;
+} 
+
+.counter-widget-text {
+  vertical-align: center;
+  text-align: center;
+  font-size: 24pt;
+  font-weight: bold;
+  width: 98%;
+} 
+
+
