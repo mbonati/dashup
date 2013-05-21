@@ -1,4 +1,4 @@
-dashup
+DashUp
 ======
 
 Html5 dashboard with REST API for Application Telemetry.
@@ -24,7 +24,7 @@ Html5 dashboard with REST API for Application Telemetry.
 * go to the src/web folder and type "npm install -d"
 * start the application with the command "node app"
 * start the browser at url "http://localhost:3000"
-
+* Login credentials: user=admin , password=* 
 
 
 #### Screenshots ####
