@@ -1,6 +1,9 @@
 dashup
 ======
 
+Html5 dashboard with REST API for Application Telemetry.
+
+
 #### Software Stack ####
 
 ##### Server side: #####
@@ -15,7 +18,17 @@ dashup
 * https://github.com/rvagg/node-levelup
 
 
-Html5 dashboard with REST API for Application Telemetry.
+#### Getting started ####
+* install node.js (http://nodejs.org/) 
+* checkout or download the project
+* go to the src/web folder and type "npm install -d"
+* start the application with the command "node app"
+* start the browser at url "http://localhost:3000"
+
+
+
+#### Screenshots ####
+
 
 
 ![Alt text](docs/screenshots/login.png "Login")	
