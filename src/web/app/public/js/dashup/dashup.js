@@ -44,10 +44,6 @@ function serializeDashboard(){
 	  	index++;
 	});
 
-	//console.log(JSON.stringify(widgetInfos));
-
-	//var widgets = $('.gridster').children().filter('.dashup-widget');
-
 	var serialized = { 'dashboardSerialized' : {
 							'dashboardId' : 'default',
 							'widgets' : widgetInfos
@@ -58,9 +54,25 @@ function serializeDashboard(){
 
 	$.ajax({
 		type: 'post',
-		url : './serializeDashboard',
+		url : './saveDashboard',
 		dataType: "json",
 		data: serialized
+	})
+}
+
+function loadDashboard(dashboardId){
+	console.log("load dashboard called for: "+dashboardId);
+	$.ajax({
+		type: 'post',
+		url : './loadDashboard',
+		dataType: "json",
+		data: { 'dashboardId' : dashboardId },
+		success: function(data, textStatus, xhr){
+			console.log("loadDashboard success: " + textStatus + " -> " +data);
+		},
+		error: function(xhr, textStatus, errorThrown) {
+			console.log("load dashboard error: " + errorThrown);
+        }
 	})
 }
 

@@ -117,10 +117,18 @@ html
         ul
     script(type='text/javascript')
       $(function(){ //DOM Ready
+
+      //initialize the dashboard component   
       initDashup();
+      
+      // Only for demo 
       createDashboardWidget('clock');
       createDashboardWidget('text');
       createDashboardWidget('gauge');
+      
+      // load persisted dashboard widgets
+      loadDashboard("default");
+
       $('#settings-menu').sidr({
       side: 'right'
       });

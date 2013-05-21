@@ -85,14 +85,25 @@ module.exports = function(app) {
 	
 	
 	//dashborad management
-	app.post('/serializeDashboard', function(req, res){
+	app.post('/saveDashboard', function(req, res){
 		var serializedDashboard = req.param('dashboardSerialized');
 		var user = req.session.user;
 		console.log("serializeDashboard called for user " +  user.username + " -> " + JSON.stringify(serializedDashboard));
 		DB.saveDashboard(serializedDashboard, user);
 	});
 
-
+	app.post("/loadDashboard", function(req,res){
+		var dashboardId = req.param('dashboardId');
+		var user = req.session.user;
+		console.log("loadDashboard called for user: " +  user.username + " dashboardId: " + dashboardId);
+		DB.loadDashboard(dashboardId, user, function(value, err){
+			if (err){
+				res.send("error", err);
+			} else {
+				res.send("value", value);
+			}
+		});
+	});
 	//end dashborad management
 
 
