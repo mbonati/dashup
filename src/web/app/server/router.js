@@ -1,7 +1,7 @@
 var CT = require('./modules/country-list');
 var AM = require('./modules/account-manager-local');
 var EM = require('./modules/email-dispatcher');
-var DB = require('./modules/database.js');
+var DB = require('./modules/database-local.js');
 
 module.exports = function(app) {
 

@@ -25,12 +25,37 @@ function onDragStop(event, ui){
 }
 
 function serializeDashboard(){
+
+	var gridsterSerialized = gridster.serialize();
+
+	var widgetInfos = new Array();
+	var index = 0;
+	$( ".dashup-widget" ).each(function( index ) {
+		var widgetType = $(this).attr('type');
+		var widgetId = $(this).attr('id');
+	  	
+	  	var widgetInfo = { 'widgetType' : widgetType,
+	  					   'widgetId' : widgetId,
+	  					   'widgetPosition' : gridsterSerialized[index]
+	  					 };
+	  	
+	  	widgetInfos.push(widgetInfo);
+
+	  	index++;
+	});
+
+	//console.log(JSON.stringify(widgetInfos));
+
+	//var widgets = $('.gridster').children().filter('.dashup-widget');
+
 	var serialized = { 'dashboardSerialized' : {
-							id : 'default',
-							gridster: gridster.serialize()
+							'dashboardId' : 'default',
+							'widgets' : widgetInfos
 					  }
 					};
+
 	console.log(JSON.stringify(serialized));
+
 	$.ajax({
 		type: 'post',
 		url : './serializeDashboard',
