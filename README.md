@@ -19,12 +19,24 @@ Html5 dashboard with REST API for Application Telemetry.
 
 
 #### Getting started ####
+
+##### MongoDB prerequisite #####
+
+* install mongodb (http://www.mongodb.org/)
+* create a db directory into the mongodb installation folder (ex: mkdir -p data/db)
+* start mondodb service with the command "mongod dbpath data/db" (or any other db folder created above)
+
+##### Web Application #####
+
 * install node.js (http://nodejs.org/) 
 * checkout or download the project
 * go to the src/web folder and type "npm install -d"
 * start the application with the command "node app"
 * start the browser at url "http://localhost:3000"
 * Login credentials: user=admin , password=* 
+
+##### Java JMX Proxy #####
+* todo
 
 
 #### Screenshots ####
