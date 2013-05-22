@@ -1,5 +1,5 @@
-DashUp
-======
+![Alt text](docs/dashup_logo_small_1.0.0.png "Login")
+
 
 Html5 dashboard with REST API for Application Telemetry.
 
