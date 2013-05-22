@@ -1,5 +1,6 @@
 console.log("Loading database...");
 
+var DASHUP 		= require('./dashup-utils');
 var crypto 		= require('crypto')
 var MongoDB 	= require('mongodb').Db;
 var Server 		= require('mongodb').Server;
@@ -29,21 +30,32 @@ var dashboards = db.collection('dashboards');
 
 exports.saveDashboard = function(serializedDashboard, user, callback) {
 
-	var dashboardUID = user.id + "_" + serializedDashboard.id;
-	console.log("saving dashboard "+ dashboardUID + " for user "+ user.username);
+	var dashboardUID = DASHUP.buildDasboardUID(serializedDashboard.id, user);
 
-	dashboards.find({'userId':user.id, "dashboardId": serializedDashboard.id }).nextObject(function(err, doc) {            
-          console.log("Returned #1 documents");
-    });
+	console.log("saving dashboard "+ dashboardUID + " for user "+ user.username + " -> " + JSON.stringify(serializedDashboard));
 
-	/*
 	var dashboardInfo = { "userId": user.id, 
 						  "dashboardId": serializedDashboard.id,
 						  "dashboard": serializedDashboard };
+
 	dashboards.insert(dashboardInfo, {safe: true}, function(err, records) {
  		if (err) throw err;
  		console.log("Record added as "+records[0]._id);
  	});
-	*/
+	
 
 };
+
+exports.loadDashboard = function(dashboardId, user, callback) {
+
+	var dashboardUID = DASHUP.buildDasboardUID(dashboardId, user.id);
+
+	console.log("loading dashboard "+ dashboardUID + " for user "+ user.username);
+
+	dashboards.find({'userId':user.id, "dashboardId": dashboardId }).nextObject(function(err, doc) {            
+          console.log("Returned #1 documents " + JSON.stringify(doc));
+    });
+
+};
+
+

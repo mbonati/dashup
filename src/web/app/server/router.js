@@ -1,7 +1,8 @@
-var CT = require('./modules/country-list');
-var AM = require('./modules/account-manager-local');
-var EM = require('./modules/email-dispatcher');
-var DB = require('./modules/database-local.js');
+var DASHUP 		= require('./modules/dashup-utils');
+var CT 			= require('./modules/country-list');
+var AM 			= require('./modules/account-manager-local');
+var EM 			= require('./modules/email-dispatcher');
+var DB 			= require('./modules/database.js');
 
 module.exports = function(app) {
 
