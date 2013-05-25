@@ -54,6 +54,7 @@ exports.loadDashboard = function(dashboardId, user, callback) {
 
 	dashboards.find({'userId':user.id, "dashboardId": dashboardId }).nextObject(function(err, doc) {            
           console.log("Returned #1 documents " + JSON.stringify(doc));
+          callback(doc);
     });
 
 };
