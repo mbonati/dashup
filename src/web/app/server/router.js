@@ -101,7 +101,11 @@ module.exports = function(app) {
 			if (err){
 				res.send("error", err);
 			} else {
-				res.send("value", value);
+				if (value){
+					res.send("value", value);
+				} else {
+					res.send("value",{});
+				}
 			}
 		});
 	});
