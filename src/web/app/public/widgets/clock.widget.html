@@ -1,4 +1,4 @@
-<div class="dashup-widget" type="dashup.base.clock" id="widget-<%= wuid %>">
+<div class="dashup-widget" type="dashup.base.clock" id="<%= wuid %>">
 		<div class="widget-header" style="height:90px;">
 			<div class="widget-header-content" style="padding: 10px;">				
 				<a class="big-text light-text" id="time<%= wuid %>"></a>
@@ -19,9 +19,12 @@
 
 
 <script>
+console.log('Creating clock <%= id %>() <%= wuid %>' );
 clockTick<%= id %>();
+//console.log('setInterval clockTick<%= id %>()');
 setInterval('clockTick<%= id %>()', 1000);
 function clockTick<%= id %>(){
+	//console.log('called clockTick<%= id %>() <%= wuid %>' );
 	$('#time<%= wuid %>').html(moment().format('h:mm:ss'));
 	$('#time_a<%= wuid %>').html(moment().format('a'));
 	$('#day<%= wuid %>').html(moment().format('dddd'));

@@ -111,9 +111,9 @@ function loadWidget(widgetData){
 			title: widgetInfo.defaults.title,
 			template: widgetInfo.template,
 			size: widgetInfo.defaults.size,
+			id: widgetData.widgetId,
 			position: [widgetData.widgetPosition.col,widgetData.widgetPosition.row]
 		};
-		console.log("loadWiget for " + JSON.stringify(initCfg));
 		createWidget(initCfg);
 	}
 
@@ -163,6 +163,8 @@ function registerBaseWidgets(){
 	registerClockWidget();	
 	registerGaugeWidget();
 	registerTextWidget();
+	registerCounterWidget();
+	registerLineChartWidget();
 }
 
 
@@ -171,7 +173,7 @@ function registerClockWidget(){
 		type : "dashup.base.clock",
 		template: 'widgets/clock.widget.html',
 		defaults: {
-			title: "Clock",
+			title: "CLOCK",
 			size: [2,2]
 		}
 	};
@@ -183,7 +185,7 @@ function registerGaugeWidget(){
 		type : "dashup.base.gauge",
 		template: 'widgets/gauge.widget.html',
 		defaults: {
-			title: "Gauge",
+			title: "GAUGE",
 			size: [2,2]
 		}
 	};
@@ -195,19 +197,48 @@ function registerTextWidget(){
 		type : "dashup.base.text",
 		template: 'widgets/text.widget.html',
 		defaults: {
-			title: "Text",
+			title: "TEXT",
 			size: [4,1]
 		}
 	};
 	registerWidget(wInfo);
 }
 
+function registerCounterWidget(){
+	var wInfo = {
+		type : "dashup.base.counter",
+		template: 'widgets/counter.widget.html',
+		defaults: {
+			title: "COUNTER",
+			size: [1,1]
+		}
+	};
+	registerWidget(wInfo);
+}
+
+function registerLineChartWidget(){
+	var initCfg = {
+		type : "dashup.base.line.chart",
+		template: 'widgets/line.chart.widget.html',
+		defaults: {
+			title: 'LINE CHART',
+			size: [4,2]
+		}
+	};
+	registerWidget(initCfg);
+}
+
+
+
+
+
+
 
 
 /**
  * Clock Widget 
  */
-function createClockWidget(){
+function addClockWidget(){
 
 	var initCfg = {
 		title: 'Simple Chart Widget',
@@ -215,65 +246,75 @@ function createClockWidget(){
 		size: [2,2],
 		position: [1,1]
 	};
-	createWidget(initCfg);
+	createWidget(initCfg, true /*serialize*/);
 
 }
 
-function createTextWidget(){
+function addTextWidget(){
 	var initCfg = {
 		title: 'Simple Text Widget',
 		template: 'widgets/text.widget.html',
 		size: [4,1],
 		position: [1,1]
 	};
-	createWidget(initCfg);
+	createWidget(initCfg, true /*serialize*/);
 }
 
-function createGaugeWidget(){
+function addGaugeWidget(){
 	var initCfg = {
 		title: 'Simple Gauge Widget',
 		template: 'widgets/gauge.widget.html',
 		size: [2,2],
 		position: [1,1]
 	};
-	createWidget(initCfg);
+	createWidget(initCfg, true /*serialize*/);
 }
 
-function createCounterWidget(){
+function addCounterWidget(){
 	var initCfg = {
 		title: 'Logins',
 		template: 'widgets/counter.widget.html',
 		size: [1,1],
 		position: [1,1]
 	};
-	createWidget(initCfg);
+	createWidget(initCfg, true /*serialize*/);
 }
 
-function createTimeSeriesWidget(){
+function addTimeSeriesWidget(){
 	var initCfg = {
 		title: 'Simple Time Series Widget',
 		template: 'widgets/timeseries.widget.html',
 		size: [4,2],
 		position: [1,1]
 	};
-	createWidget(initCfg);
+	createWidget(initCfg, true /*serialize*/);
 }
 
-function createLineChartWidget(){
+function addLineChartWidget(){
 	var initCfg = {
 		title: 'Line Chart Widget',
 		template: 'widgets/line.chart.widget.html',
 		size: [4,2],
 		position: [1,1]
 	};
-	createWidget(initCfg);
+	createWidget(initCfg, true /*serialize*/);
 }
 
-function createWidget(initConfig){
+
+
+function createWidget(initConfig, serialize){
+
+	console.log ("create widget called for "+ JSON.stringify(initConfig));
 
 	$.get(initConfig.template, function(template) {
+
+			widgetUniqueId = uuid.v4();
+			if (initConfig.id){
+				widgetUniqueId = initConfig.id;
+			}
+
 			var compiled = _.template(template);
-			var widgetConfig = { wuid: uuid.v4(),
+			var widgetConfig = { wuid: widgetUniqueId,
 				   				 id: uniquieId(),
 				   				 title: initConfig.title
 							   };
@@ -282,6 +323,9 @@ function createWidget(initConfig){
 			 					initConfig.size[1],
 			 					initConfig.position[0],
 			 					initConfig.position[1]);
+			if (serialize){
+				serializeDashboard();
+			}
 		});
 
 }
