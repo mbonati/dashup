@@ -30,17 +30,18 @@ var dashboards = db.collection('dashboards');
 
 exports.saveDashboard = function(serializedDashboard, user, callback) {
 
-	var dashboardUID = DASHUP.buildDasboardUID(serializedDashboard.id, user);
+	var dashboardUID = DASHUP.buildDasboardUID(serializedDashboard.dashboardId, user.id);
 
 	console.log("saving dashboard "+ dashboardUID + " for user "+ user.username + " -> " + JSON.stringify(serializedDashboard));
 
-	var dashboardInfo = { "userId": user.id, 
-						  "dashboardId": serializedDashboard.id,
+	var dashboardInfo = { "_id": dashboardUID,
+						  "userId": user.id, 
+						  "dashboardId": serializedDashboard.dashboardId,
 						  "dashboard": serializedDashboard };
 
-	dashboards.insert(dashboardInfo, {safe: true}, function(err, records) {
+	dashboards.save(dashboardInfo, {safe: true}, function(err, records) {
  		if (err) throw err;
- 		console.log("Record added as "+records[0]._id);
+ 		console.log("Record added as "+records);
  	});
 	
 
