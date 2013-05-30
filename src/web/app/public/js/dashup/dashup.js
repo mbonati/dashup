@@ -165,6 +165,7 @@ function registerBaseWidgets(){
 	registerTextWidget();
 	registerCounterWidget();
 	registerLineChartWidget();
+	registerStackedAreaWidget();
 }
 
 
@@ -222,6 +223,18 @@ function registerLineChartWidget(){
 		template: 'widgets/line.chart.widget.html',
 		defaults: {
 			title: 'LINE CHART',
+			size: [4,2]
+		}
+	};
+	registerWidget(initCfg);
+}
+
+function registerStackedAreaWidget(){
+	var initCfg = {
+		type : "dashup.base.stacked.area",
+		template: 'widgets/stacked.area.widget.html',
+		defaults: {
+			title: 'STACKED AREA CHART',
 			size: [4,2]
 		}
 	};
@@ -294,6 +307,16 @@ function addLineChartWidget(){
 	var initCfg = {
 		title: 'Line Chart Widget',
 		template: 'widgets/line.chart.widget.html',
+		size: [4,2],
+		position: [1,1]
+	};
+	createWidget(initCfg, true /*serialize*/);
+}
+
+function addStackedAreaWidget(){
+	var initCfg = {
+		title: 'Stacked Area Widget',
+		template: 'widgets/stacked.area.widget.html',
 		size: [4,2],
 		position: [1,1]
 	};

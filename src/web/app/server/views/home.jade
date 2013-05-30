@@ -44,12 +44,23 @@ html
     link(rel='stylesheet', type='text/css', href='js/retro-easy-pie-chart/jquery.easy-pie-chart.css')
     script(type='text/javascript', src='js/retro-easy-pie-chart/jquery.easy-pie-chart.js', charset='utf-8')
     //
+   
+    //
+       d3 
+    script(type='text/javascript', src='js/d3/d3.min.js', charset='utf-8')
+    //
+
        Charts 
     //
        morris 
     script(src='//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js')
     link(rel='stylesheet', type='text/css', href='js/morris/morris.css')
-    script(src='js/morris/morris.min.js')
+    script(type='text/javascript',src='js/morris/morris.min.js')
+    //
+    //
+       rickshaw 
+    link(rel='stylesheet', type='text/css', href='js/rickshaw/rickshaw.min.css')
+    script(type='text/javascript',src='js/rickshaw/rickshaw.min.js')
     //
        end Charts 
     //
@@ -71,9 +82,6 @@ html
           .header-buttons
             ul.button-list.small.asphalt(style='')
               li
-                a(href='#', onclick='createDashboardWidget(\'chart\')')
-                  span Add widget...
-              li
                 a(href='#', onclick='createDashboardWidget(\'clock\')')
                   span Clock
               li
@@ -88,6 +96,9 @@ html
               li
                 a(href='#', onclick='createDashboardWidget(\'lineChart\')')
                   span Line
+              li
+                a(href='#', onclick='createDashboardWidget(\'stackedArea\')')
+                  span Area
               li
                 a#settings-menu(href='#sidr') Settings
       #user-toolbar-options.toolbar-icons(style='display: none;')
@@ -148,5 +159,7 @@ html
       addTimeSeriesWidget();
       } else if (widgetType=='lineChart'){
       addLineChartWidget();
+      } else if (widgetType=='stackedArea'){
+      addStackedAreaWidget();
       }
       }
