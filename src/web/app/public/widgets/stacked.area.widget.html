@@ -1,0 +1,109 @@
+<style>
+#chart_container {
+        position: relative;
+        font-family: Arial, Helvetica, sans-serif;
+}
+#chart {
+        position: relative;
+        left: 40px;
+}
+.rickshaw_graph .y_ticks {
+        left: 0;
+}
+#y_axis {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 40px;
+}
+#legend {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 0 0 10px;
+}
+</style>
+
+<div class="dashup-widget" type="dashup.base.stacked.area" id="<%= wuid %>">
+		<div class="widget-header">
+			<div class="widget-header-content">
+				<%= title %>
+			</div>
+		</div>
+		<div class="widget-container">
+			<div class="widget-container-content" style="text-align: center;">
+				<div class="chart" data-percent="0" id="stackedArea-<%= wuid %>" style="height:100%;"></div>
+			</div>
+		</div>
+		<div class="widget-footer">
+			<a class="widget-footer-content">footer</a>
+		</div>
+		<div id="legend"></div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+
+	// set up our data series with 150 random data points
+
+	var seriesData = [ [], []];
+	var random = new Rickshaw.Fixtures.RandomData(150);
+
+	for (var i = 0; i < 150; i++) {
+		random.addData(seriesData);
+	}
+	
+	var palette = new Rickshaw.Color.Palette();
+
+	var graph = new Rickshaw.Graph( {
+	        element: document.querySelector("#stackedArea-<%= wuid %>"),
+	        renderer: 'area',
+	        stroke: true,
+			  series: [
+			    {
+			      name: "Used Heap",
+			      //color: 'steelblue',
+			      color: palette.color(),
+			      //data: seriesData[0]
+			      data: [ { x: -1893456000, y: 29389330 }, { x: -1577923200, y: 33125803 }, { x: -1262304000, y: 37857633 }, { x: -946771200, y: 41665901 }, { x: -631152000, y: 47197088 }, { x: -315619200, y: 54973113 }, { x: 0, y: 62795367 }, { x: 315532800, y: 75372362 }, { x: 631152000, y: 85445930 }, { x: 946684800, y: 100236820 }, { x: 1262304000, y: 114555744 } ]
+			    }, {
+			      name: "Heap Size",
+			      //color: 'lightblue',
+			      color: palette.color(),
+			      //data: seriesData[1]
+			      data: [ { x: -1893456000, y: 29888542 }, { x: -1577923200, y: 34019792 }, { x: -1262304000, y: 38594100 }, { x: -946771200, y: 40143332 }, { x: -631152000, y: 44460762 }, { x: -315619200, y: 51619139 }, { x: 0, y: 56571663 }, { x: 315532800, y: 58865670 }, { x: 631152000, y: 59668632 }, { x: 946684800, y: 64392776 }, { x: 1262304000, y: 66927001 } ]
+			 }]               
+	} );
+	         
+	var ticksTreatment = 'glow';	
+	var xAxis = new Rickshaw.Graph.Axis.Time( {
+		graph: graph,
+		ticksTreatment: ticksTreatment
+	} );
+
+	xAxis.render();
+
+	var yaxis = new Rickshaw.Graph.Axis.Y( {
+	        graph: graph,
+	        orientation: 'left',
+	        tickFormat: Rickshaw.Fixtures.Number.formatKMBT//,
+	        //element: document.getElementById('y_axis'),
+	} );
+
+	yaxis.render();
+
+	var hoverDetail = new Rickshaw.Graph.HoverDetail( {
+    	graph: graph,
+    	xFormatter: function(x) { return Math.floor(x) + "seconds" },
+    	yFormatter: function(y) { return Math.floor(y) + " Bytes" }
+	} );
+
+	var legend = new Rickshaw.Graph.Legend( {
+        element: document.querySelector('#legend'),
+        graph: graph
+	} );
+
+	graph.render();
+});
+
+
+</script>
