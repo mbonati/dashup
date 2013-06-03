@@ -37,7 +37,7 @@
 		<div class="widget-footer">
 			<a class="widget-footer-content">footer</a>
 		</div>
-		<div id="legend"></div>
+		<div id="legend-<%= wuid %>"></div>
 </div>
 
 <script type="text/javascript">
@@ -98,7 +98,7 @@ $(function() {
 	} );
 
 	var legend = new Rickshaw.Graph.Legend( {
-        element: document.querySelector('#legend'),
+        element: document.querySelector('#legend-<%= wuid %>'),
         graph: graph
 	} );
 
