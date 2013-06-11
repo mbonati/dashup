@@ -8,6 +8,7 @@ import javax.management.MBeanServerConnection;
 
 import net.sf.json.JSONObject;
 
+@Monitorable(type="cpu")
 public class CPULoadMonitor implements DashupMonitorable {
 
 	private long prevUpTime, prevProcessCpuTime;
@@ -19,7 +20,8 @@ public class CPULoadMonitor implements DashupMonitorable {
 	public CPULoadMonitor() {
 	}
 
-	public void initialize(MBeanServerConnection remote) throws IOException{
+	@Override
+	public void setup(MBeanServerConnection remote) throws Exception {
 		this.remote = remote;
 		
 		rmBean = ManagementFactory
@@ -101,5 +103,6 @@ public class CPULoadMonitor implements DashupMonitorable {
 	public JSONObject toJSON() {
 		return cpuLoadInfo.toJSON();
 	}
+
 
 }

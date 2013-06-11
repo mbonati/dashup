@@ -32,10 +32,10 @@ public class SimpleJMXMonitor extends Thread {
 		try {
 			remote = JmxUtils.getRemoteConnection(host, port);
 			cpuMonitor = new CPULoadMonitor();
-			cpuMonitor.initialize(remote);
+			cpuMonitor.setup(remote);
 			
 			memMonitor = new MemoryLoadMonitor();
-			memMonitor.initialize(remote);
+			memMonitor.setup(remote);
 			
 		} catch (Exception e1) {
 			e1.printStackTrace();

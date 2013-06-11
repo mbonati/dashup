@@ -7,6 +7,7 @@ import javax.management.MBeanServerConnection;
 
 import net.sf.json.JSONObject;
 
+@Monitorable(type="Runtime")
 public class RuntimeMonitor implements DashupMonitorable {
 
 	RuntimeMXBean runtimeBean;
@@ -16,7 +17,8 @@ public class RuntimeMonitor implements DashupMonitorable {
 	public RuntimeMonitor(){
 	}
 	
-	public void initialize(MBeanServerConnection remote) throws Exception {
+	@Override
+	public void setup(MBeanServerConnection remote) throws Exception {
 		this.remote = remote;
 		runtimeBean = ManagementFactory.newPlatformMXBeanProxy(remote,
 				ManagementFactory.RUNTIME_MXBEAN_NAME, RuntimeMXBean.class);
@@ -27,5 +29,6 @@ public class RuntimeMonitor implements DashupMonitorable {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

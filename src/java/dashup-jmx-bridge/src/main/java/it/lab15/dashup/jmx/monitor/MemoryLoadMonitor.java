@@ -8,6 +8,7 @@ import javax.management.MBeanServerConnection;
 
 import net.sf.json.JSONObject;
 
+@Monitorable(type="memory")
 public class MemoryLoadMonitor implements DashupMonitorable {
 
 	private MBeanServerConnection remote;
@@ -17,7 +18,8 @@ public class MemoryLoadMonitor implements DashupMonitorable {
 	public MemoryLoadMonitor() {
 	}
 
-	public void initialize(MBeanServerConnection remote) throws Exception {
+	@Override
+	public void setup(MBeanServerConnection remote) throws Exception {
 		this.remote = remote;
 		memBean = ManagementFactory.newPlatformMXBeanProxy(remote,
 				ManagementFactory.MEMORY_MXBEAN_NAME, MemoryMXBean.class);
@@ -76,4 +78,5 @@ public class MemoryLoadMonitor implements DashupMonitorable {
 		json.put("getNonHeapUsage",getNonHeapUsage());
 		return json;
 	}
+
 }
