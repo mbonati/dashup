@@ -1,0 +1,25 @@
+<ApplicationMonitor>
+	
+	<!--  Dashup frontend connection parameters -->
+	<dashup>
+		<rest url="http://localhost:5000" />
+	</dashup>
+	
+	
+	<!--  Monitored application parameters -->
+	<applications>
+		
+		<!--  Monitored Application -->
+		<application id="Test Application">
+			<jmx host="localhost" port="12345">
+				<exports>
+					<export type="cpu" samplingRate="1000" />
+					<export type="memory" samplingRate="2000" />
+				</exports>
+			</jmx>
+		</application>
+	
+	
+	</applications>
+
+</ApplicationMonitor>

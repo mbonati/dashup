@@ -1,0 +1,14 @@
+<ApplicationMonitor>
+
+	<applications>
+		<application id="Simple Jmx Application">
+			<jmx host="localhost" port="12345">
+				<exports>
+					<export type="cpu" samplingRate="1000" />
+					<export type="memory" samplingRate="2000" />
+				</exports>
+			</jmx>
+		</application>
+	</applications>
+
+</ApplicationMonitor>

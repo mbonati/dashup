@@ -1,0 +1,22 @@
+<ApplicationMonitor>
+
+	<applications>
+		<application id="Test Application">
+			<jmx host="localhost" port="12345">
+				<exports>
+					<export type="cpu" samplingRate="1000" />
+					<export type="memory" samplingRate="2000" />
+				</exports>
+			</jmx>
+		</application>
+		<application id="Test Application B">
+			<jmx host="localhost" port="123456">
+				<exports>
+					<export type="cpu" samplingRate="1000" />
+					<export type="memory" samplingRate="2000" />
+				</exports>
+			</jmx>
+		</application>
+	</applications>
+
+</ApplicationMonitor>
