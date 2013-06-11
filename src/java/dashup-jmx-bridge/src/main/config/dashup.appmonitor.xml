@@ -1,5 +1,10 @@
 <ApplicationMonitor>
 
+	<!--  Dashup frontend connection parameters -->
+	<dashup>
+		<rest url="http://localhost:5000" />
+	</dashup>
+
 	<applications>
 		<application name="Simple Jmx Application" id="it.lab15.simpleJmxApp">
 			<jmx host="localhost" port="12345">
