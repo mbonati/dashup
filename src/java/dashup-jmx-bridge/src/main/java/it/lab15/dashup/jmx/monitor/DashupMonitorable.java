@@ -10,4 +10,8 @@ public interface DashupMonitorable {
 
 	public JSONObject toJSON();
 
+	public String getId();
+
+	public void setId(String id);
+
 }

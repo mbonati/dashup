@@ -12,7 +12,7 @@ public class RuntimeMonitor implements DashupMonitorable {
 
 	RuntimeMXBean runtimeBean;
 	private MBeanServerConnection remote;
-	
+	private String id;
 	
 	public RuntimeMonitor(){
 	}
@@ -30,5 +30,14 @@ public class RuntimeMonitor implements DashupMonitorable {
 		return null;
 	}
 
+	@Override
+	public String getId() {
+		return this.id;
+	}
+
+	@Override
+	public void setId(String id) {
+		this.id = id;
+	}
 
 }

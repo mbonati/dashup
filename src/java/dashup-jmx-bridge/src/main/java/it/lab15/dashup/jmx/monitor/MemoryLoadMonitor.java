@@ -14,6 +14,7 @@ public class MemoryLoadMonitor implements DashupMonitorable {
 	private MBeanServerConnection remote;
 	private MemoryMXBean memBean;
 	private JSONObject json = new JSONObject();
+	private String id;
 
 	public MemoryLoadMonitor() {
 	}
@@ -77,6 +78,16 @@ public class MemoryLoadMonitor implements DashupMonitorable {
 		json.put("getNonHeapMax",getNonHeapMax());
 		json.put("getNonHeapUsage",getNonHeapUsage());
 		return json;
+	}
+
+	@Override
+	public String getId() {
+		return this.id;
+	}
+
+	@Override
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

@@ -16,6 +16,7 @@ public class CPULoadMonitor implements DashupMonitorable {
 	private CPULoadInfo cpuLoadInfo;
 	com.sun.management.OperatingSystemMXBean osBean;
 	private RuntimeMXBean rmBean;
+	private String id;
 
 	public CPULoadMonitor() {
 	}
@@ -102,6 +103,16 @@ public class CPULoadMonitor implements DashupMonitorable {
 	@Override
 	public JSONObject toJSON() {
 		return cpuLoadInfo.toJSON();
+	}
+
+	@Override
+	public String getId() {
+		return this.id;
+	}
+
+	@Override
+	public void setId(String id) {
+		this.id = id;
 	}
 
 

@@ -1,11 +1,11 @@
 <ApplicationMonitor>
 
 	<applications>
-		<application id="Simple Jmx Application">
+		<application name="Simple Jmx Application" id="it.lab15.simpleJmxApp">
 			<jmx host="localhost" port="12345">
 				<exports>
-					<export type="cpu" samplingRate="1000" />
-					<export type="memory" samplingRate="2000" />
+					<export type="cpu" samplingRate="1000" id="cpu" /> <!--  the widget must subscribe  it.lab15.simpleJmxApp.cpu -->
+					<export type="memory" samplingRate="2000" id="memory" />
 				</exports>
 			</jmx>
 		</application>
