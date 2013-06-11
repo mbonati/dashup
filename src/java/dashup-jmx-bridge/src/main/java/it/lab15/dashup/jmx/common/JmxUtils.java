@@ -32,7 +32,7 @@ public class JmxUtils {
 		return connector.getMBeanServerConnection();
 	}
 
-	public static MBeanServerConnection getRemoteConnection(String host, int port) throws IOException {
+	public static MBeanServerConnection getRemoteConnection(String host, int port) throws Exception {
 		return getRemoteConnection(createServiceURL(host, port));
 	}
 	

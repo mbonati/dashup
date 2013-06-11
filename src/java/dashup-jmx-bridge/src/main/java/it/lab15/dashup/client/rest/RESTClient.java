@@ -24,7 +24,7 @@ public class RESTClient {
 
 	public void connect(String url) throws Exception {
 		if (isConnected()) {
-			throw new Exception("Already conencted.");
+			throw new Exception("Already connected.");
 		} else {
 			this.daushupUrl = url;
 			asyncHttpClient = new AsyncHttpClient();

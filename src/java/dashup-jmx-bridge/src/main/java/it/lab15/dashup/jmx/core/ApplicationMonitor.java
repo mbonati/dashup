@@ -3,6 +3,7 @@ package it.lab15.dashup.jmx.core;
 import it.lab15.dashup.client.rest.RESTClient;
 import it.lab15.dashup.jmx.ApplicationMonitorEngine;
 import it.lab15.dashup.jmx.common.JmxUtils;
+import it.lab15.dashup.jmx.core.JmxConnector.JmxConnectorListener;
 import it.lab15.dashup.jmx.monitor.DashupMonitorable;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class ApplicationMonitor {
 	String jmxHost;
 	int jmxPort;
 	private MBeanServerConnection jmxRemoteConnection;
+	private JmxConnector jmxConnector;
 	RESTClient restClient = new RESTClient();
 
 	public ApplicationMonitor(HierarchicalConfiguration appConfig){
@@ -55,32 +57,56 @@ public class ApplicationMonitor {
 		LOG.info("Starting monitor daemon for {}", getApplicationId());
 		
 		LOG.debug("Connecting jmx monitor daemon to {}:{}...", jmxHost, jmxPort);
-		jmxRemoteConnection = JmxUtils.getRemoteConnection(jmxHost, jmxPort);
-		LOG.debug("jmx monitor daemon connected to {}:{}", jmxHost, jmxPort);
-		
-		
-		LOG.debug("Setting up monitorables...", jmxHost, jmxPort);
-		for (DashupMonitorable monitorable:monitorables){
-			try {
-				monitorable.setup(jmxRemoteConnection);
-			} catch (Exception ex){
-				LOG.error("Erro setting up monitorable: {}",ex.getMessage(), ex);
+		jmxConnector = new JmxConnector(jmxHost, jmxPort, true, new JmxConnectorListener() {
+			@Override
+			public void onJmxDisconnection(MBeanServerConnection connection) {
+				stopMonitoring(connection);
 			}
-		}
+			@Override
+			public void onJmxConnection(MBeanServerConnection connection) {
+				startMonitoring(connection);
+			}
+		});
+		jmxConnector.start();
 		
-		
-		//REST connection to Dashup
-		String restURL = ConfigurationManager.getInstance().getConfiguration().getString("dashup.rest[@url]");
-		LOG.debug("Connecting jmx monitor daemon to Dashup REST interface {}...", restURL);
-		restClient.connect(restURL);
-		LOG.debug("jmx monitor daemon conneted to Dashup REST interface {}...", restURL);
-
-		
-		
-		//TODO!!
 		LOG.info("Monitor daemon for {} is started", getApplicationId());
 		return this;
 	}
+
+	private void stopMonitoring(MBeanServerConnection connection) {
+		// TODO Auto-generated method stub
+	}
+
+	private void startMonitoring(MBeanServerConnection connection) {
+		LOG.debug("startMonitoring called");
+		try {
+			this.jmxRemoteConnection = connection;
+			LOG.debug("jmx monitor daemon connected to {}:{}", jmxHost, jmxPort);
+			
+			
+			LOG.debug("Setting up monitorables...", jmxHost, jmxPort);
+			for (DashupMonitorable monitorable:monitorables){
+				try {
+					monitorable.setup(jmxRemoteConnection);
+				} catch (Exception ex){
+					LOG.error("Erro setting up monitorable: {}",ex.getMessage(), ex);
+				}
+			}
+			
+			
+			//REST connection to Dashup
+			if (!restClient.isConnected()){
+				String restURL = ConfigurationManager.getInstance().getConfiguration().getString("dashup.rest[@url]");
+				LOG.debug("Connecting jmx monitor daemon to Dashup REST interface {}...", restURL);
+				restClient.connect(restURL);
+				LOG.debug("jmx monitor daemon conneted to Dashup REST interface {}...", restURL);
+			}
+			
+		} catch (Exception ex){
+			LOG.error("Error starting monitoring: {}", ex.getMessage(), ex);
+		}
+	}
+
 	
 	public ApplicationMonitor shutdown(){
 		LOG.info("Shutting down monitor daemon for {}", getApplicationId());
