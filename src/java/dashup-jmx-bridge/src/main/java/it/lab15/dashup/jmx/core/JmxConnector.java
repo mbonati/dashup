@@ -58,17 +58,23 @@ public class JmxConnector {
 		return null;
 	}
 	
+	private Timer reconnectionTimer;
+	
 	private void startReconnectionTask() {
+		if (reconnectionTimer!=null){
+			reconnectionTimer.cancel();
+			reconnectionTimer = null;
+		}
+		stopConnectionProbe();
 		TimerTask reconnectionTask = new TimerTask() {
 			@Override
 			public void run() {
 				LOG.info("Trying to reconnect to {}:{}....", jmxHost, jmxPort);
-				stopConnectionProbe();
 				doConnect();
 			}
 		};
-		Timer t = new Timer();
-		t.schedule(reconnectionTask, autoReconnectDelay);
+		reconnectionTimer = new Timer("ReconnectionTimer");
+		reconnectionTimer.schedule(reconnectionTask, autoReconnectDelay);
 	}
 	
 	private void startConnectionProbe(){
@@ -80,9 +86,9 @@ public class JmxConnector {
 				if (jmxRemoteConnection!=null){
 					try {
 						jmxRemoteConnection.getMBeanCount();
-						listener.onJmxDisconnection(jmxRemoteConnection);
 					} catch (IOException e) {
 						LOG.error("Connection probe error: {}", e.getMessage());
+						listener.onJmxDisconnection(jmxRemoteConnection);
 						startReconnectionTask();
 					}
 				} else {

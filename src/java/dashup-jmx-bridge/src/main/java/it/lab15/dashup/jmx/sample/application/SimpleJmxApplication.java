@@ -11,6 +11,7 @@ public class SimpleJmxApplication  {
 
 	private static int very_Expensive_Iterations = 10000000;
 	private static int normal_Iterations = 1000;
+	private static int lite_Iterations = 10;
 
 	/**
 	 * @param args
@@ -35,7 +36,7 @@ public class SimpleJmxApplication  {
 	protected void handleEvents(){
 		if (randomGenerator.nextBoolean()&&randomGenerator.nextBoolean()&&randomGenerator.nextBoolean()){
 			if (randomGenerator.nextInt(100)>80){
-				int iterations = randomGenerator.nextInt(normal_Iterations);
+				int iterations = randomGenerator.nextInt(lite_Iterations);
 				doSomething(iterations);
 			}
 		}
