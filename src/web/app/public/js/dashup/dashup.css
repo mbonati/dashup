@@ -181,6 +181,7 @@ ul, ol {
   height: 18px; 
   bottom: 0; 
   width: 100%;
+  /*background-color: #757575;*/
 }
 
 .widget-footer-content {
@@ -211,6 +212,26 @@ ul, ol {
   font-size: 24pt;
   font-weight: bold;
   width: 98%;
+}  
+
+
+
+/******** Footer ********/
+.widget-footer {
+  padding: 2px;
+}
+
+.widget-footer a {
+  font-size: 9pt;
+  color: rgb(100, 100, 100);
+ }
+
+.footer-icon {
+  color: rgb(85, 85, 85);
+  float:right;
 } 
 
+.footer-icon:hover {
+  color: rgb(130, 130, 130);
+} 
 
