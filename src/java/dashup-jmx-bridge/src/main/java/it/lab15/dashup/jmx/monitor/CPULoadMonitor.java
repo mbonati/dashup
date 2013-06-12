@@ -53,7 +53,7 @@ public class CPULoadMonitor implements DashupMonitorable {
 		return cpuLoadInfo.cpuUsage;
 	}
 
-	public void updateCPUInfo() {
+	private void updateCPUInfo() {
 		if (prevUpTime > 0L && cpuLoadInfo.upTime > prevUpTime) {
 			// elapsedCpu is in ns and elapsedTime is in ms.
 			long elapsedCpu = cpuLoadInfo.processCpuTime - prevProcessCpuTime;
@@ -63,12 +63,21 @@ public class CPULoadMonitor implements DashupMonitorable {
 			// 99% to avoid Plotter showing a scale from 0% to 200%.
 			cpuLoadInfo.cpuUsage = Math.round(Math.min(100F, elapsedCpu
 					/ (elapsedTime * 10000F * cpuLoadInfo.nCPUs)));
+			cpuLoadInfo.cpuUsage = Math.min(100F, elapsedCpu
+					/ (elapsedTime * 10000F * cpuLoadInfo.nCPUs));
 		}
 
 		prevUpTime = cpuLoadInfo.upTime;
 		prevProcessCpuTime = cpuLoadInfo.processCpuTime;
 	}
-
+	
+	private void refresh(){
+		try {
+			getCPULoad();
+		} catch (Exception e) {
+		}
+	}
+	
 	public CPULoadInfo getCPULoadInfo(){
 		return cpuLoadInfo;
 	}
@@ -102,6 +111,7 @@ public class CPULoadMonitor implements DashupMonitorable {
 
 	@Override
 	public JSONObject toJSON() {
+		refresh();
 		return cpuLoadInfo.toJSON();
 	}
 

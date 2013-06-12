@@ -14,7 +14,7 @@ public class SimpleJMXMonitor extends Thread {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new SimpleJMXMonitor("localhost",1234).start();
+		new SimpleJMXMonitor("localhost",12345).start();
 	}
 
 	String host;
