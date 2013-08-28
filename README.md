@@ -4,7 +4,7 @@
 Html5 dashboard with REST API for Application Telemetry.
 
 
-#### Software Stack ####
+## Software Stack 
 
 ##### Server side: #####
 * node.js (http://nodejs.org/) 
@@ -18,7 +18,7 @@ Html5 dashboard with REST API for Application Telemetry.
 * https://github.com/rvagg/node-levelup
 
 
-#### Getting started ####
+## Getting started 
 
 ##### MongoDB prerequisite #####
 
@@ -66,11 +66,11 @@ To debug the dashp server application you can use "node inspector" (https://gith
 	* open http://127.0.0.1:8080/debug?port=5858 in Chrome
 
 
-##### Java JMX Proxy #####
+## Java JMX Proxy 
 * todo
 
 
-#### Screenshots ####
+## Screenshots 
 
 
 
