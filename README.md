@@ -40,6 +40,32 @@ Html5 dashboard with REST API for Application Telemetry.
 
 To debug the dashp server application you can use "node inspector" (https://github.com/node-inspector/node-inspector)
 
+## Requirements
+
+* [node.js](http://github.com/ry/node)
+  - version 0.8 or later
+* [npm](http://github.com/isaacs/npm)
+* A Blink-based browser (i.e. Google Chrome)
+
+## Install
+
+* With [npm](http://github.com/isaacs/npm)
+
+        $ npm install -g node-inspector
+
+## Debugging dashup
+	
+	* run dashup application with --debug switch:
+
+		$ node --debug app.js
+
+	* start the inspector. I usually put it in the background
+
+		$ node-inspector &
+
+	* open http://127.0.0.1:8080/debug?port=5858 in Chrome
+	
+
 ##### Java JMX Proxy #####
 * todo
 
