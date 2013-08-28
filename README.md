@@ -35,6 +35,11 @@ Html5 dashboard with REST API for Application Telemetry.
 * start the browser at url "http://localhost:3000"
 * Login credentials: user=admin , password=* 
 
+
+##### Debugging Server Side Application #####
+
+To debug the dashp server application you can use "node inspector" (https://github.com/node-inspector/node-inspector)
+
 ##### Java JMX Proxy #####
 * todo
 
